@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>DataConverter</h1>
+    <h2>1.Introduce tu dato</h2>
+    <form>
+    <input type="text" id="extractor" class="extractor" placeholder="introduce tu dato" required>
+    <input type="button" value="comenzar" id="submit" class="submit" onclick="data()">
+    </form>
+    <p id="muestra">Tu dato</p>
+    <h2>2.Diviertete</h2>
+    <h3>OPCIONES DE TEXTO</h3>
+    <input type="button" value="A MAYUSCULAS" id="mayus" class="option" onclick="mayus()">
+    <input type="button" value="A minusculas" id="minus" class="option" onclick="minus()">
+    <h3>ALMACENAMIENTO</h3>
+    <input type="button" value="Almacenar dato" id="almac" class="option" onclick="almacenar()">
+    <input type="button" value="Editar dato" id="edit" class="none" onclick="editar()">
+    <input type="button" value="Guardar edición" id="save" class="none" onclick="guardar()">
+    <input type="button" value="Copiar dato" id="copy" class="none" onclick="copiar()">
+    <div id="muestradiv" class="none">
+        <h3 class="titlealmac">DATOS ALMACENADOS</h3>
+        <p id="muestralist"></p>
+    </div>
+    <script src="dataconverter.js"></script>
+</body>
+</html>

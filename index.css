@@ -1,0 +1,31 @@
+body{
+    font-family: 'DynaPuff', cursive;
+}
+h1{
+    color:green;
+}
+.extractor{
+    border:2px solid orange;
+    background-color:black;
+    color:blue;
+}
+.option{
+    background-color:rgb(152, 247, 152);
+}
+.option2{
+    background-color:rgb(241, 247, 152)
+}
+.option:hover{
+    background-color:black;
+    color:white;
+}
+.none{
+    display:none;
+}
+.titlealmac{
+    color:red;
+}
+#muestralist{
+    background-color:yellow;
+    border:2px solid black;
+}
