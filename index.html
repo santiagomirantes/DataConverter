@@ -20,16 +20,20 @@
     <p id="muestra">Tu dato</p>
     <h2>2.Diviertete</h2>
     <h3>OPCIONES DE TEXTO</h3>
-    <input type="button" value="A MAYUSCULAS" id="mayus" class="option" onclick="mayus()">
-    <input type="button" value="A minusculas" id="minus" class="option" onclick="minus()">
+    <input type="button" value="A MAYUSCULAS" id="mayus" class="option">
+    <input type="button" value="A minusculas" id="minus" class="option">
+    <h3>OPCIONES DE DISEÑO</h3>
+    <input type="button" id="showcolor" class="option" value="Cambiar color">
+    <input type="text" id="color" class="none" placeholder="escribe el valor hexadecimal de tu color">
+    <input type="button" id="verifcolor" class="none" value="Confirmar">
     <h3>ALMACENAMIENTO</h3>
-    <input type="button" value="Almacenar dato" id="almac" class="option" onclick="almacenar()">
-    <input type="button" value="Editar dato" id="edit" class="none" onclick="editar()">
-    <input type="button" value="Guardar edición" id="save" class="none" onclick="guardar()">
-    <input type="button" value="Copiar dato" id="copy" class="none" onclick="copiar()">
+    <input type="button" value="Almacenar dato" id="almac" class="option">
+    <input type="button" value="Editar dato" id="edit" class="none">
+    <input type="button" value="Guardar edición" id="save" class="none">
+    <input type="button" value="Copiar dato" id="copy" class="none">
     <div id="muestradiv" class="none">
         <h3 class="titlealmac">DATOS ALMACENADOS</h3>
-        <p id="muestralist"></p>
+        <div id="muestralist"></div>
     </div>
     <script src="dataconverter.js"></script>
 </body>

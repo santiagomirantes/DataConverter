@@ -47,27 +47,69 @@ class Personas{
         this.edad = precio
 }
 */
-let dato
-let muestra
-const list = []
-const list2 = []
-const input = document.getElementById("extractor")
-const muestralist = document.getElementById("muestralist")
+let dato;
+let muestra;
+let element;
+let selectedcolor;
+let colorcheck;
+let list = [];
+let list2 = [];
+let elementlist = [];
+const input = document.getElementById("extractor");
+const muestralist = document.getElementById("muestralist");
 const muestradiv = document.querySelector("#muestradiv");
-let selecbut = document.querySelector("#copy")
-let selecbut2 = document.querySelector("#edit")
-let savebut = document.querySelector("#save")
+let mayusbut = document.querySelector("#mayus")
+let minusbut = document.querySelector("#minus")
+let showcolorbut = document.querySelector("#showcolor")
+let color = document.querySelector("#color")
+let colorverif = document.querySelector("#verifcolor")
+let almacbut = document.querySelector("#almac")
+let selecbut = document.querySelector("#copy");
+let selecbut2 = document.querySelector("#edit");
+let savebut = document.querySelector("#save");
 let number = 1;
-let number2 = 0;
-let selecnum = " "
-let selecnum2 = ""
+let number2 = -1;
+let elementnum = 0
+let selecnum = " ";
+let selecnum2 = "";
+
+mayusbut.addEventListener("click", mayus)
+minusbut.addEventListener("click", minus)
+showcolorbut.addEventListener("click", seleccolor)
+colorverif.addEventListener("click", verificandocol)
+almacbut.addEventListener("click", almacenar)
+selecbut.addEventListener("click", copiar)
+savebut.addEventListener("click", guardar)
+selecbut2.addEventListener("click", editar)
 
 function mostrando() {
     muestra.innerHTML = dato;
+    muestra.style.color = ""
 }
 
 function mostrandolist() {
-    muestralist.innerHTML = list.join(" ")
+    element = document.createElement("p")
+    elementnode = document.createTextNode(list[number - 1])
+    element.appendChild(elementnode)
+    if(colorcheck === true) {
+        element.style.color = selectedcolor;
+        colorcheck = false
+    }
+    muestralist.appendChild(element)
+}
+function mostrandolist2() {
+    muestralist.innerHTML = "" 
+    list2.forEach(item2 => list2function())
+}
+function list2function() {
+    element2 = document.createElement("p")
+    elementnode2 = document.createTextNode(list2[number2])
+    element2.appendChild(elementnode2)
+    if(colorcheck === true) {
+        element2.style.color = selectedcolor;
+        colorcheck = false
+    }
+    muestralist.appendChild(element2)
 }
 function data() {
     dato = document.getElementById("extractor").value;
@@ -121,6 +163,12 @@ function editar() {
     savebut.removeAttribute("class")
     savebut.setAttribute("class", "option2")
     mostrando()
+    selecbut.removeAttribute("class")
+    selecbut.setAttribute("class", "none")
+    selecbut2.removeAttribute("class")
+    selecbut2.setAttribute("class", "none")
+    almacbut.removeAttribute("class")
+    almacbut.setAttribute("class", "none")
     }
     else{
         alert("el valor ingresado no es un número")
@@ -128,16 +176,33 @@ function editar() {
 }
 function guardar() {
     for(let item of list) {
-    list.push(item)
+    number2 = number2 + 1
     if(number2 == selecnum2) {
-        list.push(dato)
+        dato = seleccion2 + "." + dato;
+        list2.push(dato)
+        continue
     }
-    list.shift()
-    if(number2 == selecnum2) {
-        list.shift()
-        break
-     }
-     number2 = number2 + 1
+    list2.push(item)  
     }
-    mostrandolist()
+    mostrandolist2()
+    number2 = -1
+    list = list2
+    list2 = []
+    selecbut.removeAttribute("class")
+    selecbut.setAttribute("class", "option")
+    selecbut2.removeAttribute("class")
+    selecbut2.setAttribute("class", "option")
+    almacbut.removeAttribute("class")
+    almacbut.setAttribute("class", "option")
+    savebut.removeAttribute("class")
+    savebut.setAttribute("class", "none")
+}
+function seleccolor() {
+    color.className = "color"
+    colorverif.className="option2"
+}
+function verificandocol() {
+    selectedcolor = color.value;
+    muestra.style.color = selectedcolor
+    colorcheck = true
 }
