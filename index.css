@@ -15,7 +15,18 @@ h1{
 .option2{
     background-color:rgb(241, 247, 152)
 }
+.option3{
+    background-color:rgb(243, 85, 85);
+}
+.option3:hover{
+    background-color:black;
+    color:red;
+}
 .option:hover{
+    background-color:black;
+    color:white;
+}
+.option2:hover{
     background-color:black;
     color:white;
 }
@@ -31,4 +42,40 @@ h1{
 }
 .color{
     display:block;
+}
+.datasection{
+    display:block;
+}
+.datasection p{
+    display:inline-block;
+    cursor:pointer;
+}
+.datasection a{
+    display:inline-block;
+    cursor:pointer;
+    text-decoration:none;
+}
+#muestra{
+    margin-right:10px;
+}
+#bigger{
+    margin-right:5px;
+    color:green;
+    font-size:25px;
+}
+#smaller{
+    color:red;
+    font-size:25px;
+}
+#objname{
+    color:darkgreen;
+}
+.inline{
+    display:inline-block;
+}
+.key{
+    color:rgb(56, 56, 240);
+}
+.value{
+    color:rgb(102, 124, 252);
 }

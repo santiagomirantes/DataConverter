@@ -17,7 +17,11 @@
     <input type="text" id="extractor" class="extractor" placeholder="introduce tu dato" required>
     <input type="button" value="comenzar" id="submit" class="submit" onclick="data()">
     </form>
+    <div class="datasection">
     <p id="muestra">Tu dato</p>
+    <a id="bigger">+</a>
+    <a id="smaller">-</a>
+    </div>
     <h2>2.Diviertete</h2>
     <h3>OPCIONES DE TEXTO</h3>
     <input type="button" value="A MAYUSCULAS" id="mayus" class="option">
@@ -26,15 +30,27 @@
     <input type="button" id="showcolor" class="option" value="Cambiar color">
     <input type="text" id="color" class="none" placeholder="escribe el valor hexadecimal de tu color">
     <input type="button" id="verifcolor" class="none" value="Confirmar">
-    <h3>ALMACENAMIENTO</h3>
+    <h3>OBJETOS</h3>
+    <input type="button" id="convertobject" class="option" value="Convertir a objeto">
+    <h4 id="objname" class="none">NAME</h4>
+        <p class="objcontent none">{</p>
+                <div id="properties"></div>
+        <p class="objcontent2 none"> } </p>
+        <input type="button" class="none" id="addkv" value="Añadir propiedad / valor">
+    <h3>ALMACENAMIENTO TEMPORAL</h3>
     <input type="button" value="Almacenar dato" id="almac" class="option">
     <input type="button" value="Editar dato" id="edit" class="none">
     <input type="button" value="Guardar edición" id="save" class="none">
     <input type="button" value="Copiar dato" id="copy" class="none">
     <div id="muestradiv" class="none">
-        <h3 class="titlealmac">DATOS ALMACENADOS</h3>
+        <h3 class="titlealmac">DATOS ALMACENADOS TEMPORALMENTE</h3>
         <div id="muestralist"></div>
     </div>
+    <h3>ALMACENAMIENTO LOCAL</h3>
+    <input type="button" value="Almacenar dato localmente" id="almaclocal" class="option">
+    <input type="button" value="Vaciar almacenamiento local" id="delalmaclocal" class="option3">
+    <h3>DATOS ALMACENADOS LOCALMENTE</h3>
+    <div id="muestralistlocal"></div>
     <script src="dataconverter.js"></script>
 </body>
 </html>

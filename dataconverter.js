@@ -47,40 +47,56 @@ class Personas{
         this.edad = precio
 }
 */
-let dato;
-let muestra;
-let element;
-let selectedcolor;
-let colorcheck;
+let dato, muestra, element, element3, selectedcolor, colorcheck, object, key ,value, objelement, objelement2, objnode, objnode2, kvdiv;
 let list = [];
 let list2 = [];
 let elementlist = [];
-const input = document.getElementById("extractor");
-const muestralist = document.getElementById("muestralist");
+let dataobject = {};
+const input = document.querySelector("#extractor");
+let bigger = document.querySelector("#bigger")
+let smaller = document.querySelector("#smaller")
+const muestralist = document.querySelector("#muestralist");
 const muestradiv = document.querySelector("#muestradiv");
 let mayusbut = document.querySelector("#mayus")
 let minusbut = document.querySelector("#minus")
 let showcolorbut = document.querySelector("#showcolor")
 let color = document.querySelector("#color")
 let colorverif = document.querySelector("#verifcolor")
+let convertidor = document.querySelector("#convertobject");
+let objname = document.querySelector("#objname");
+let objcontent = document.querySelector(".objcontent")
+let objcontent2 = document.querySelector(".objcontent2")
+let objproperties = document.querySelector("#properties")
+let addkvbut = document.querySelector("#addkv")
 let almacbut = document.querySelector("#almac")
 let selecbut = document.querySelector("#copy");
 let selecbut2 = document.querySelector("#edit");
 let savebut = document.querySelector("#save");
+let almaclocal = document.querySelector("#almaclocal");
+let delalmaclocal = document.querySelector("#delalmaclocal")
+let muestralistlocal = document.querySelector("#muestralistlocal")
+let muestrasize = 16;
 let number = 1;
 let number2 = -1;
+let number3 = 1;
 let elementnum = 0
 let selecnum = " ";
 let selecnum2 = "";
 
+bigger.addEventListener("click", bigplus)
+smaller.addEventListener("click", smallplus)
 mayusbut.addEventListener("click", mayus)
 minusbut.addEventListener("click", minus)
 showcolorbut.addEventListener("click", seleccolor)
 colorverif.addEventListener("click", verificandocol)
+convertidor.addEventListener("click", convertiraobj)
+addkvbut.addEventListener("click", addkeyvalue)
 almacbut.addEventListener("click", almacenar)
 selecbut.addEventListener("click", copiar)
 savebut.addEventListener("click", guardar)
 selecbut2.addEventListener("click", editar)
+almaclocal.addEventListener("click", almacenarlocal)
+delalmaclocal.addEventListener("click", eliminarlocal)
 
 function mostrando() {
     muestra.innerHTML = dato;
@@ -205,4 +221,60 @@ function verificandocol() {
     selectedcolor = color.value;
     muestra.style.color = selectedcolor
     colorcheck = true
+}
+
+function bigplus() {
+    if(muestrasize <= 26) {
+    muestrasize = muestrasize + 2;
+    muestra.style.fontSize = muestrasize + "px";
+    }
+}
+
+function smallplus() {
+    if(muestrasize >= 16) {
+    muestrasize = muestrasize - 2;
+    muestra.style.fontSize = muestrasize + "px";
+    }
+}
+function convertiraobj() {
+    objname.innerHTML = dato
+    dato = new Object()
+    objname.removeAttribute("class")
+    objcontent.removeAttribute("class")
+    objcontent2.removeAttribute("class")
+    addkvbut.removeAttribute("class")
+    addkvbut.setAttribute("class", "option2")
+}
+function addkeyvalue() {
+   key = prompt("Ingrese su propiedad");
+   value = prompt("Ingrese el valor de su propiedad");
+   kvdiv = document.createElement("div")
+   objelement = document.createElement("p")
+   objnode = document.createTextNode(key + ":")
+   objelement.appendChild(objnode)
+   kvdiv.appendChild(objelement)
+   objelement.setAttribute("class", "inline key")
+   objelement2 = document.createElement("p")
+   objnode2 = document.createTextNode(value);
+   objelement2.appendChild(objnode2)
+   kvdiv.appendChild(objelement2)
+   objelement2.setAttribute("class", "inline value")
+   objproperties.appendChild(kvdiv)
+
+   dato[key] = value;
+
+}
+function localmuestra() {
+    element3 = document.createElement("p")
+    node3 = document.createTextNode(JSON.parse(localStorage[localización]))
+    element3.appendChild(node3)
+    muestralistlocal.appendChild(element3)
+}
+function almacenarlocal() {
+    localización = "dato" + number3;
+    localStorage.setItem(localización , JSON.stringify(dato))
+    localmuestra()
+}
+function eliminarlocal() {
+    localStorage.clear()
 }
