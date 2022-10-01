@@ -15,7 +15,7 @@
     <h2>1.Introduce tu dato</h2>
     <form>
     <input type="text" id="extractor" class="extractor" placeholder="introduce tu dato" required>
-    <input type="button" value="comenzar" id="submit" class="submit" onclick="data()">
+    <input type="button" value="comenzar" id="submit" class="submit">
     </form>
     <div class="datasection">
     <p id="muestra">Tu dato</p>
@@ -37,11 +37,26 @@
                 <div id="properties"></div>
         <p class="objcontent2 none"> } </p>
         <input type="button" class="none" id="addkv" value="Añadir propiedad / valor">
+        <div id="kvfield" class="none">
+        <input type="text" id="addk" placeholder="Escribe el nombre de la propiedad">
+        <input type="text" id="addv" placeholder="Escribe su valor">
+        <input type="button" id="finaladdkv" value="Añadir">
+        </div>
     <h3>ALMACENAMIENTO TEMPORAL</h3>
     <input type="button" value="Almacenar dato" id="almac" class="option">
     <input type="button" value="Editar dato" id="edit" class="none">
     <input type="button" value="Guardar edición" id="save" class="none">
     <input type="button" value="Copiar dato" id="copy" class="none">
+    <div id="selecdiv" class="none">
+        <h4 id="selectitle">INSERTE EL NUMERO DEL DATO QUE QUIERE COPIAR</h4>
+        <input type="number" id="selecinput">
+        <input type="button" id="selecsubmit" value="Seleccionar">
+        </div>
+        <div id="selecdiv2" class="none">
+        <h4 id="selectitle2">INSERTE EL NUMERO DEL DATO QUE QUIERE EDITAR</h4>
+        <input type="number" id="selecinput2">
+        <input type="button" id="selecsubmit2" value="Seleccionar">
+        </div>
     <div id="muestradiv" class="none">
         <h3 class="titlealmac">DATOS ALMACENADOS TEMPORALMENTE</h3>
         <div id="muestralist"></div>

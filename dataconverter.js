@@ -53,6 +53,7 @@ let list2 = [];
 let elementlist = [];
 let dataobject = {};
 const input = document.querySelector("#extractor");
+let submit = document.querySelector("#submit")
 let bigger = document.querySelector("#bigger")
 let smaller = document.querySelector("#smaller")
 const muestralist = document.querySelector("#muestralist");
@@ -64,13 +65,23 @@ let color = document.querySelector("#color")
 let colorverif = document.querySelector("#verifcolor")
 let convertidor = document.querySelector("#convertobject");
 let objname = document.querySelector("#objname");
-let objcontent = document.querySelector(".objcontent")
-let objcontent2 = document.querySelector(".objcontent2")
-let objproperties = document.querySelector("#properties")
-let addkvbut = document.querySelector("#addkv")
+let objcontent = document.querySelector(".objcontent");
+let objcontent2 = document.querySelector(".objcontent2");
+let objproperties = document.querySelector("#properties");
+let addkvbut = document.querySelector("#addkv");
+let addkvfield = document.querySelector("#kvfield");
+let addkbut = document.querySelector("#addk");
+let addvbut = document.querySelector("#addv");
+let finaladdkvbut = document.querySelector("#finaladdkv");
 let almacbut = document.querySelector("#almac")
 let selecbut = document.querySelector("#copy");
+let selecinput = document.querySelector("#selecinput");
+let selecsubmit = document.querySelector("#selecsubmit");
+let selecdiv = document.querySelector("#selecdiv");
 let selecbut2 = document.querySelector("#edit");
+let selecinput2 = document.querySelector("#selecinput2")
+let selecsubmit2 = document.querySelector("#selecsubmit2")
+let selecdiv2 = document.querySelector("#selecdiv2")
 let savebut = document.querySelector("#save");
 let almaclocal = document.querySelector("#almaclocal");
 let delalmaclocal = document.querySelector("#delalmaclocal")
@@ -83,6 +94,7 @@ let elementnum = 0
 let selecnum = " ";
 let selecnum2 = "";
 
+submit.addEventListener("click", data)
 bigger.addEventListener("click", bigplus)
 smaller.addEventListener("click", smallplus)
 mayusbut.addEventListener("click", mayus)
@@ -90,17 +102,26 @@ minusbut.addEventListener("click", minus)
 showcolorbut.addEventListener("click", seleccolor)
 colorverif.addEventListener("click", verificandocol)
 convertidor.addEventListener("click", convertiraobj)
-addkvbut.addEventListener("click", addkeyvalue)
+addkvbut.addEventListener("click", addkeyvalueshow)
+finaladdkvbut.addEventListener("click", addkeyvalue)
 almacbut.addEventListener("click", almacenar)
-selecbut.addEventListener("click", copiar)
+selecbut.addEventListener("click", copiarshow)
+selecsubmit.addEventListener("click", copiar)
 savebut.addEventListener("click", guardar)
-selecbut2.addEventListener("click", editar)
+selecbut2.addEventListener("click", editarshow)
+selecsubmit2.addEventListener("click", editar)
 almaclocal.addEventListener("click", almacenarlocal)
 delalmaclocal.addEventListener("click", eliminarlocal)
 
 function mostrando() {
     muestra.innerHTML = dato;
     muestra.style.color = ""
+    objname.innerHTML = ""
+    objproperties.innerHTML = ""
+    objcontent.setAttribute("class", "none")
+    objcontent2.setAttribute("class", "none") 
+    addkvbut.setAttribute("class", "none")
+    addkvfield.setAttribute("class", "none")
 }
 
 function mostrandolist() {
@@ -158,21 +179,29 @@ function almacenar() {
     mostrandolist()
     number = number + 1
 }
+function copiarshow() {
+    selecdiv.removeAttribute("class")
+    }
 function copiar() {
-    seleccion = prompt("Inserta el puesto de tu dato (del 1 al " + list.length + ")")
-    if(seleccion = parseInt(seleccion)) {
-    selecnum = seleccion - 1;
-    dato = list[selecnum];
-    dato = dato.substring(2)
-    mostrando()
-    }
-    else{
-        alert("el valor ingresado no es un número")
-    }
+    seleccion = parseInt(selecinput.value);
+    if(typeof(seleccion) == "number") {
+        selecdiv.setAttribute("class", "none")
+        selecnum = seleccion - 1;
+        dato = list[selecnum];
+        dato = dato.substring(2)
+        mostrando()
+}
+else{
+    alert("el valor ingresado no es un número")
+}
+}
+function editarshow() {
+      selecdiv2.removeAttribute("class")
 }
 function editar() {
-    seleccion2 = prompt("Inserta el puesto de tu dato (del 1 al " + list.length + ")")
-    if(seleccion2 = parseInt(seleccion2)) {
+    seleccion2 = parseInt(selecinput2.value)
+    if(typeof(seleccion2) == "number") {
+    selecdiv2.setAttribute("class", "none")
     selecnum2 = seleccion2 - 1;
     dato = list[selecnum2];
     dato = dato.substring(2)
@@ -245,9 +274,12 @@ function convertiraobj() {
     addkvbut.removeAttribute("class")
     addkvbut.setAttribute("class", "option2")
 }
+function addkeyvalueshow() {
+    addkvfield.removeAttribute("class")
+}
 function addkeyvalue() {
-   key = prompt("Ingrese su propiedad");
-   value = prompt("Ingrese el valor de su propiedad");
+   key = addkbut.value;
+   value = addvbut.value;
    kvdiv = document.createElement("div")
    objelement = document.createElement("p")
    objnode = document.createTextNode(key + ":")
@@ -277,4 +309,5 @@ function almacenarlocal() {
 }
 function eliminarlocal() {
     localStorage.clear()
+    muestralistlocal.innerHTML = ""
 }
