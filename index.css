@@ -1,22 +1,56 @@
 body{
     font-family: 'DynaPuff', cursive;
+    background-image:url("https://media.istockphoto.com/photos/china-shenzhen-skyscraper-picture-id969333552?b=1&k=20&m=969333552&s=170667a&w=0&h=PLPBto2N2Jr7yBSfuxvDyqyws7zIFysEbwWwgT_HqDU=");
+    background-size:100%;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+}
+.introduction{
+    text-align:center;
 }
 h1{
     color:green;
+    font-size:10vw;
+}
+h3{
+    font-size:2rem;
 }
 .extractor{
     border:2px solid orange;
     background-color:black;
     color:blue;
+    width:40vw;
+    height:10vh;
+    font-size:4rem;
+}
+.extractor-title, .sectitle{
+    font-size:5rem;
+}
+.submit{
+    background-color:black;
+    border: 2px solid green;
+    color:green;
+    font-size: 2rem;
+}
+.submit:hover{
+    background-color: green;
+    color: black;
+    border: 2px solid black;
+}
+.datasection{
+    font-size:5rem;
 }
 .option{
     background-color:rgb(152, 247, 152);
+    font-size:1rem;
 }
 .option2{
-    background-color:rgb(241, 247, 152)
+    background-color:rgb(241, 247, 152);
+    font-size:1rem;
 }
 .option3{
     background-color:rgb(243, 85, 85);
+    font-size:1rem;
 }
 .option3:hover{
     background-color:black;
@@ -61,11 +95,11 @@ h1{
 #bigger{
     margin-right:5px;
     color:green;
-    font-size:25px;
+    font-size:4rem;
 }
 #smaller{
     color:red;
-    font-size:25px;
+    font-size:4rem;
 }
 #objname{
     color:darkgreen;
@@ -87,4 +121,7 @@ h1{
 }
 #selecdiv, #selecdiv2{
     padding:10px;
+}
+.muestralocal{
+    font-size:1rem;
 }

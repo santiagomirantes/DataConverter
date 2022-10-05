@@ -7,12 +7,14 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <div class="introduction">
     <h1>DataConverter</h1>
-    <h2>1.Introduce tu dato</h2>
+    <h2 class="extractor-title">1.Introduce tu dato</h2>
     <form>
     <input type="text" id="extractor" class="extractor" placeholder="introduce tu dato" required>
     <input type="button" value="comenzar" id="submit" class="submit">
@@ -22,14 +24,26 @@
     <a id="bigger">+</a>
     <a id="smaller">-</a>
     </div>
-    <h2>2.Diviertete</h2>
+    </div>
+    <h2 class="sectitle">2.Diviertete</h2>
+    <div data-aos="fade-right">
     <h3>OPCIONES DE TEXTO</h3>
     <input type="button" value="A MAYUSCULAS" id="mayus" class="option">
     <input type="button" value="A minusculas" id="minus" class="option">
+    </div>
+    <div data-aos="fade-right">
+    <h3>OPCIONES DE NÚMEROS</h3>
+    <input type="button" value="Sumar uno" id="sumar" class="option">
+    <input type="button" value="Restar uno" id="restar" class="option">
+    <p type="errornumb" class="none">El dato ingresado no es un numero</p>
+    </div>
+    <div data-aos="fade-right">
     <h3>OPCIONES DE DISEÑO</h3>
     <input type="button" id="showcolor" class="option" value="Cambiar color">
     <input type="text" id="color" class="none" placeholder="escribe el valor hexadecimal de tu color">
     <input type="button" id="verifcolor" class="none" value="Confirmar">
+    </div>
+    <div data-aos="fade-right">
     <h3>OBJETOS</h3>
     <input type="button" id="convertobject" class="option" value="Convertir a objeto">
     <h4 id="objname" class="none">NAME</h4>
@@ -42,6 +56,8 @@
         <input type="text" id="addv" placeholder="Escribe su valor">
         <input type="button" id="finaladdkv" value="Añadir">
         </div>
+        </div>
+        <div data-aos="zoom-out-right">
     <h3>ALMACENAMIENTO TEMPORAL</h3>
     <input type="button" value="Almacenar dato" id="almac" class="option">
     <input type="button" value="Editar dato" id="edit" class="none">
@@ -61,11 +77,16 @@
         <h3 class="titlealmac">DATOS ALMACENADOS TEMPORALMENTE</h3>
         <div id="muestralist"></div>
     </div>
+    </div>
+    <div data-aos="zoom-out-right">
     <h3>ALMACENAMIENTO LOCAL</h3>
     <input type="button" value="Almacenar dato localmente" id="almaclocal" class="option">
     <input type="button" value="Vaciar almacenamiento local" id="delalmaclocal" class="option3">
     <h3>DATOS ALMACENADOS LOCALMENTE</h3>
     <div id="muestralistlocal"></div>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="dataconverter.js"></script>
 </body>
 </html>

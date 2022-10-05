@@ -47,6 +47,8 @@ class Personas{
         this.edad = precio
 }
 */
+
+AOS.init()
 let dato, muestra, element, element3, selectedcolor, colorcheck, object, key ,value, objelement, objelement2, objnode, objnode2, kvdiv;
 let list = [];
 let list2 = [];
@@ -60,6 +62,8 @@ const muestralist = document.querySelector("#muestralist");
 const muestradiv = document.querySelector("#muestradiv");
 let mayusbut = document.querySelector("#mayus")
 let minusbut = document.querySelector("#minus")
+let sumarbut = document.querySelector("#sumar")
+let restarbut = document.querySelector("#restar")
 let showcolorbut = document.querySelector("#showcolor")
 let color = document.querySelector("#color")
 let colorverif = document.querySelector("#verifcolor")
@@ -86,7 +90,7 @@ let savebut = document.querySelector("#save");
 let almaclocal = document.querySelector("#almaclocal");
 let delalmaclocal = document.querySelector("#delalmaclocal")
 let muestralistlocal = document.querySelector("#muestralistlocal")
-let muestrasize = 16;
+let muestrasize = 5;
 let number = 1;
 let number2 = -1;
 let number3 = 1;
@@ -99,6 +103,8 @@ bigger.addEventListener("click", bigplus)
 smaller.addEventListener("click", smallplus)
 mayusbut.addEventListener("click", mayus)
 minusbut.addEventListener("click", minus)
+sumarbut.addEventListener("click", sumar)
+restarbut.addEventListener("click", restar)
 showcolorbut.addEventListener("click", seleccolor)
 colorverif.addEventListener("click", verificandocol)
 convertidor.addEventListener("click", convertiraobj)
@@ -166,6 +172,34 @@ function minus() {
     dato = dato.toLowerCase()
     mostrando()
 }
+function sumar() {
+    if(dato == parseInt(dato)) {
+     dato++
+     mostrando()
+    }
+    else{
+        swal(
+            "Error",
+            "El valor ingresado no es un número",
+            "warning"
+        )
+    }
+   input.value = ""
+}
+function restar() {
+    if(dato == parseInt(dato)) {
+        dato =  dato - 1;
+        mostrando()
+       }
+       else{
+        swal(
+            "Error",
+            "El valor ingresado no es un número",
+            "warning"
+        )
+       }
+       input.value = ""
+    }
 function almacenar() {
     list.push(number + "." + dato)
     input.value = " "
@@ -253,16 +287,16 @@ function verificandocol() {
 }
 
 function bigplus() {
-    if(muestrasize <= 26) {
-    muestrasize = muestrasize + 2;
-    muestra.style.fontSize = muestrasize + "px";
+    if(muestrasize <= 8) {
+    muestrasize = muestrasize + 1;
+    muestra.style.fontSize = muestrasize + "rem";
     }
 }
 
 function smallplus() {
-    if(muestrasize >= 16) {
-    muestrasize = muestrasize - 2;
-    muestra.style.fontSize = muestrasize + "px";
+    if(muestrasize >= 5) {
+    muestrasize = muestrasize - 1;
+    muestra.style.fontSize = muestrasize + "rem";
     }
 }
 function convertiraobj() {
@@ -311,3 +345,24 @@ function eliminarlocal() {
     localStorage.clear()
     muestralistlocal.innerHTML = ""
 }
+
+// separación
+
+const productos = [
+    { id: 1, nombre: "camisa", precio: 1000 },
+    { id: 2, nombre: "pantalon", precio: 700 },
+    { id: 3, nombre: "zapato", precio: 800 },
+    { id: 4, nombre: "gorra", precio: 1500 },
+  ];
+  
+  const traerProductos = () => {
+    return new Promise((resolve, reject) => {
+      productos ? () => {
+      setTimeout(() => {
+        resolve(productos);
+      }, 3000);
+    }:
+    reject("No se encontraron productos")
+    });
+  };
+  
