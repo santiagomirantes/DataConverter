@@ -54,6 +54,7 @@ let list = [];
 let list2 = [];
 let elementlist = [];
 let dataobject = {};
+const extractitle = document.querySelector(".extractor-title")
 const input = document.querySelector("#extractor");
 let submit = document.querySelector("#submit")
 let bigger = document.querySelector("#bigger")
@@ -68,7 +69,6 @@ let showcolorbut = document.querySelector("#showcolor")
 let color = document.querySelector("#color")
 let colorverif = document.querySelector("#verifcolor")
 let convertidor = document.querySelector("#convertobject");
-let objname = document.querySelector("#objname");
 let objcontent = document.querySelector(".objcontent");
 let objcontent2 = document.querySelector(".objcontent2");
 let objproperties = document.querySelector("#properties");
@@ -77,7 +77,12 @@ let addkvfield = document.querySelector("#kvfield");
 let addkbut = document.querySelector("#addk");
 let addvbut = document.querySelector("#addv");
 let finaladdkvbut = document.querySelector("#finaladdkv");
-let almacbut = document.querySelector("#almac")
+let operationbut = document.querySelector("#operationbut");
+let operation = document.querySelector("#operation");
+let operator = document.querySelector("#operatorselec");
+let affectnumber = document.querySelector("#affectnumber");
+let operationsubmit = document.querySelector("#operationsubmit");
+let almacbut = document.querySelector("#almac");
 let selecbut = document.querySelector("#copy");
 let selecinput = document.querySelector("#selecinput");
 let selecsubmit = document.querySelector("#selecsubmit");
@@ -98,6 +103,20 @@ let elementnum = 0
 let selecnum = " ";
 let selecnum2 = "";
 
+/*animations*/
+
+setTimeout(pulse,1000)
+
+function pulse() {
+    extractitle.setAttribute("class", "animate__animated animate__pulse extractor-title")
+    setTimeout(pulse2, 1000)
+}
+function pulse2() {
+    input.setAttribute("class", "animate__animated animate__pulse extractor")
+}
+function muestraShake() {
+    muestra.setAttribute("class", "animate__animated animate__headShake")
+}
 submit.addEventListener("click", data)
 bigger.addEventListener("click", bigplus)
 smaller.addEventListener("click", smallplus)
@@ -110,6 +129,8 @@ colorverif.addEventListener("click", verificandocol)
 convertidor.addEventListener("click", convertiraobj)
 addkvbut.addEventListener("click", addkeyvalueshow)
 finaladdkvbut.addEventListener("click", addkeyvalue)
+operationbut.addEventListener("click", operationShow)
+operationsubmit.addEventListener("click", operationing)
 almacbut.addEventListener("click", almacenar)
 selecbut.addEventListener("click", copiarshow)
 selecsubmit.addEventListener("click", copiar)
@@ -122,12 +143,14 @@ delalmaclocal.addEventListener("click", eliminarlocal)
 function mostrando() {
     muestra.innerHTML = dato;
     muestra.style.color = ""
-    objname.innerHTML = ""
+    muestra.className = ""
+    setTimeout(muestraShake, 10)
     objproperties.innerHTML = ""
     objcontent.setAttribute("class", "none")
     objcontent2.setAttribute("class", "none") 
     addkvbut.setAttribute("class", "none")
     addkvfield.setAttribute("class", "none")
+    operation.setAttribute("class", "none")
 }
 
 function mostrandolist() {
@@ -200,6 +223,41 @@ function restar() {
        }
        input.value = ""
     }
+function operationShow() {
+    operation.removeAttribute("class")
+}
+function operationing() {
+        if(typeof(parseInt(affectnumber.value)) == "number" && typeof(parseInt(dato)) == "number") {
+        selected = operator.selectedIndex;
+        dato = parseInt(dato)
+        affectnumber.value = parseInt(affectnumber.value)
+        switch(selected) {
+            case 0:
+                result = dato + parseInt(affectnumber.value)
+                dato = result
+                mostrando()
+            case 1:
+                result = dato - affectnumber.value
+                dato = result
+                mostrando()
+            case 2:
+                    result = dato * affectnumber.value
+                    dato = result
+                    mostrando()
+            case 3:
+                        result = dato / affectnumber.value
+                        dato = result
+                        mostrando()
+        }
+        }
+        else{
+            swal(
+                "Error",
+                "Solo se pueden realizar operaciones con números",
+                "warning"
+            )
+        }
+}
 function almacenar() {
     list.push(number + "." + dato)
     input.value = " "
@@ -300,9 +358,7 @@ function smallplus() {
     }
 }
 function convertiraobj() {
-    objname.innerHTML = dato
     dato = new Object()
-    objname.removeAttribute("class")
     objcontent.removeAttribute("class")
     objcontent2.removeAttribute("class")
     addkvbut.removeAttribute("class")
@@ -319,12 +375,12 @@ function addkeyvalue() {
    objnode = document.createTextNode(key + ":")
    objelement.appendChild(objnode)
    kvdiv.appendChild(objelement)
-   objelement.setAttribute("class", "inline key")
+   objelement.setAttribute("class", "inline key animate__animated animate__tada")
    objelement2 = document.createElement("p")
    objnode2 = document.createTextNode(value);
    objelement2.appendChild(objnode2)
    kvdiv.appendChild(objelement2)
-   objelement2.setAttribute("class", "inline value")
+   objelement2.setAttribute("class", "inline value animate__animated animate__tada")
    objproperties.appendChild(kvdiv)
 
    dato[key] = value;

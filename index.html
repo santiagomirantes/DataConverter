@@ -8,12 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="introduction">
-    <h1>DataConverter</h1>
+    <h1 class="animate__animated animate__pulse">DataConverter</h1>
     <h2 class="extractor-title">1.Introduce tu dato</h2>
     <form>
     <input type="text" id="extractor" class="extractor" placeholder="introduce tu dato" required>
@@ -35,7 +39,18 @@
     <h3>OPCIONES DE NÚMEROS</h3>
     <input type="button" value="Sumar uno" id="sumar" class="option">
     <input type="button" value="Restar uno" id="restar" class="option">
-    <p type="errornumb" class="none">El dato ingresado no es un numero</p>
+    <input type="button" value="Realizar operación" id="operationbut" class="option">
+    <div id="operation" class="none">
+    <h4>OPERACIÓN</h4>
+    <select id="operatorselec">
+        <option value="add" selected>Sumar</option>
+        <option value="subtraction">Restar</option>
+        <option value="multiplication">Multiplicar</option>
+        <option value="division">Dividir</option>
+    </select>
+    <p>Segundo número:</p><input type="number" id="affectnumber">
+    <input type="button" class="option2" value="Realizar" id="operationsubmit">
+    </div>
     </div>
     <div data-aos="fade-right">
     <h3>OPCIONES DE DISEÑO</h3>
@@ -46,7 +61,6 @@
     <div data-aos="fade-right">
     <h3>OBJETOS</h3>
     <input type="button" id="convertobject" class="option" value="Convertir a objeto">
-    <h4 id="objname" class="none">NAME</h4>
         <p class="objcontent none">{</p>
                 <div id="properties"></div>
         <p class="objcontent2 none"> } </p>
