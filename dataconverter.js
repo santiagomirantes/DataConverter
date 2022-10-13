@@ -49,10 +49,12 @@ class Personas{
 */
 
 AOS.init()
-let dato, muestra, element, element3, selectedcolor, colorcheck, object, key ,value, objelement, objelement2, objnode, objnode2, kvdiv;
+let dato, dataresponse, number4, muestra, element, element3, selectedcolor, colorcheck, object, key ,value, objelement, objelement2, objnode, objnode2, kvdiv;
 let list = [];
 let list2 = [];
 let elementlist = [];
+let nvalues = []
+let nkeys = [];
 let dataobject = {};
 const extractitle = document.querySelector(".extractor-title")
 const input = document.querySelector("#extractor");
@@ -73,6 +75,7 @@ let objcontent = document.querySelector(".objcontent");
 let objcontent2 = document.querySelector(".objcontent2");
 let objproperties = document.querySelector("#properties");
 let addkvbut = document.querySelector("#addkv");
+let showexbut = document.querySelector("#showexample");
 let addkvfield = document.querySelector("#kvfield");
 let addkbut = document.querySelector("#addk");
 let addvbut = document.querySelector("#addv");
@@ -128,6 +131,7 @@ showcolorbut.addEventListener("click", seleccolor)
 colorverif.addEventListener("click", verificandocol)
 convertidor.addEventListener("click", convertiraobj)
 addkvbut.addEventListener("click", addkeyvalueshow)
+showexbut.addEventListener("click", showexample)
 finaladdkvbut.addEventListener("click", addkeyvalue)
 operationbut.addEventListener("click", operationShow)
 operationsubmit.addEventListener("click", operationing)
@@ -363,9 +367,45 @@ function convertiraobj() {
     objcontent2.removeAttribute("class")
     addkvbut.removeAttribute("class")
     addkvbut.setAttribute("class", "option2")
+    showexbut.removeAttribute("class")
+    showexbut.setAttribute("class", "option")
 }
 function addkeyvalueshow() {
     addkvfield.removeAttribute("class")
+}
+async function showexample() {
+    let response = await fetch("example.json")
+    dataresponse = await response.json()
+    number4 = -1;
+    for(item in dataresponse[0]) {
+        nkeys.push(item)
+    }
+    let values = Object.values(dataresponse[0])
+    values.forEach(item => {
+        nvalues.push(item)
+    })
+    for(item in dataresponse[0]) {
+    addexample()
+    }
+}
+function addexample() {
+    number4++
+    key = nkeys[number4];
+    value = nvalues[number4]
+    kvdiv = document.createElement("div")
+    objelement = document.createElement("p")
+    objnode = document.createTextNode(key + ":")
+    objelement.appendChild(objnode)
+    kvdiv.appendChild(objelement)
+    objelement.setAttribute("class", "inline key animate__animated animate__tada")
+    objelement2 = document.createElement("p")
+    objnode2 = document.createTextNode(value);
+    objelement2.appendChild(objnode2)
+    kvdiv.appendChild(objelement2)
+    objelement2.setAttribute("class", "inline value animate__animated animate__tada")
+    objproperties.appendChild(kvdiv)
+
+    dato[key] = value;
 }
 function addkeyvalue() {
    key = addkbut.value;
@@ -402,23 +442,6 @@ function eliminarlocal() {
     muestralistlocal.innerHTML = ""
 }
 
-// separación
 
-const productos = [
-    { id: 1, nombre: "camisa", precio: 1000 },
-    { id: 2, nombre: "pantalon", precio: 700 },
-    { id: 3, nombre: "zapato", precio: 800 },
-    { id: 4, nombre: "gorra", precio: 1500 },
-  ];
-  
-  const traerProductos = () => {
-    return new Promise((resolve, reject) => {
-      productos ? () => {
-      setTimeout(() => {
-        resolve(productos);
-      }, 3000);
-    }:
-    reject("No se encontraron productos")
-    });
-  };
+
   
